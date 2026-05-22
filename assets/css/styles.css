@@ -89,8 +89,10 @@ body {
     align-items: flex-start;
 }
 
+/* Левая колонка: не сжимается, сохраняет фиксированную ширину */
 .invitation__content {
-    flex: 1;
+    flex: 0 0 auto;
+    min-width: 440px;
     background: #ffffff;
     padding: 40px;
     border-radius: 12px;
@@ -121,20 +123,23 @@ body {
     line-height: 1.3;
 }
 
+/* Правая колонка: фото сжимается при уменьшении экрана */
 .invitation__image {
-    flex: 1;
+    flex: 1 1 auto;
     min-width: 0;
 }
 
 .invitation__image img {
-    width: 90%;
+    width: 100%;
     height: auto;
+    border-radius: 12px;
     display: block;
     object-fit: cover;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 .divider {
-    width: 120px;
+    width: 60px;
     height: 2px;
     background: #d4c4b0;
     margin: 20px auto;
@@ -543,12 +548,14 @@ body {
 .count-wrap {
     position: relative;
 }
+
 .count-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
+
 .countdown {
     position: absolute;
     left: 50%;
@@ -586,31 +593,24 @@ body {
     .num {
         font-size: 40px;
     }
-    
     .lab {
         font-size: 14px;
     }
-    
     .form h2 {
         font-size: 34px;
     }
-    
     .form p {
         font-size: 18px;
     }
     
-    .invitation__container {
-        flex-direction: column;
+    /* Убрали flex-direction: column для invitation */
+    .invitation__content {
+        min-width: 380px;
+        padding: 30px 20px;
     }
-    
     .invitation__content h1 {
         font-size: 1.5em;
     }
-    
-    .invitation__content {
-        padding: 30px 20px;
-    }
-    
     .invitation-text {
         font-size: 1em;
     }
@@ -618,12 +618,10 @@ body {
     .calendar {
         gap: 5px;
     }
-    
     .day-header {
         font-size: 0.75em;
         padding: 5px 2px;
     }
-    
     .day {
         font-size: 0.9em;
     }
@@ -635,35 +633,28 @@ body {
         padding: 20px;
         gap: 25px;
     }
-    
     .timeline__item--reverse .timeline__image,
     .timeline__item--reverse .timeline__content {
         order: unset;
     }
-    
     .timeline__item--reverse {
         flex-direction: column;
     }
-    
     .event__header {
         flex-direction: column;
         gap: 5px;
     }
-    
     .event__time {
         font-size: 1.6em;
     }
-    
     .event__name {
         font-size: 1.2em;
     }
-    
     .map-card__footer {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
-    
     .timeline__gallery {
         width: 100%;
         grid-template-columns: repeat(2, 1fr);
@@ -671,9 +662,17 @@ body {
         min-height: auto;
         max-height: 300px;
     }
-    
     .gallery-item.span-wide {
         grid-column: span 1;
+    }
+    
+    /* invitation: уменьшаем min-width, но сохраняем горизонтальное расположение */
+    .invitation__content {
+        min-width: 320px;
+        padding: 25px 15px;
+    }
+    .invitation__content h1 {
+        font-size: 1.4em;
     }
 }
 
@@ -682,67 +681,56 @@ body {
         font-size: 10vw;
         bottom: 80%;
     }
-    
     .banner-message {
         font-size: 6vw;
         bottom: 20%;
     }
-    
     .open-btn {
         font-size: 3em;
         bottom: 5%;
     }
-    
     .invitation {
         padding: 40px 15px;
     }
-    
+    .invitation__container {
+        gap: 20px;
+    }
     .invitation__content {
-        padding: 25px 15px;
+        min-width: 280px;
+        padding: 20px 12px;
     }
-    
     .invitation__content h1 {
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
-    
     .invitation-text {
         font-size: 0.95em;
     }
-    
     .month-year {
         font-size: 1.2em;
     }
-    
     .calendar {
         gap: 3px;
     }
-    
     .day-header {
         font-size: 0.7em;
         padding: 3px 1px;
     }
-    
     .day {
         font-size: 0.85em;
     }
-    
     .timeline__title {
         font-size: 1.6em;
     }
-    
     .countdown {
         padding: 15px 5px;
         bottom: 5%;
     }
-    
     .grid {
         gap: 15px;
     }
-    
     .num {
         font-size: 28px;
     }
-    
     .lab {
         font-size: 12px;
     }
