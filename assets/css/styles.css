@@ -10,19 +10,21 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    width: 100%;
+    overflow-x: hidden;
     margin: 0;
     background: #f7f2ec;
     font-family: Georgia, serif;
     color: #5b4c40;
     line-height: 1.6;
-    overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
 }
 
 /* ========== HERO SECTION ========== */
 .hero {
     position: relative;
-    height: 100vh;
+    height: 100vh; /* Занимает 100% высоты экрана любого устройства */
+    min-height: 600px; /* Минимальная высота для очень коротких экранов */
     overflow: hidden;
 }
 
@@ -42,7 +44,7 @@ body {
     color: white;
     font-family: 'Nicoletta Script';
     font-size: 8vw;
-    width: 90%; /* Ограничиваем ширину текста */
+    width: 90%;
 }
 
 .banner-message {
@@ -62,12 +64,12 @@ body {
     left: 50%;
     bottom: 7%;
     transform: translateX(-50%);
-    padding: 10px 30px;
+    padding: 10px 25px;
     border-radius: 40px;
     background: rgba(0, 0, 0, .25);
     border: 1px solid rgba(255, 255, 255, .8);
     color: white;
-    font-size: 1.2rem; /* Используем rem вместо em для стабильности */
+    font-size: 1rem;
     text-decoration: none;
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
@@ -82,26 +84,27 @@ body {
 .invitation {
     padding: 60px 20px;
     background: #fffef9;
+    width: 100%;
 }
 
 .invitation__container {
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     gap: 40px;
     align-items: flex-start;
 }
 
-/* Левая колонка: гибкая, но не сжимается слишком сильно */
 .invitation__content {
-    flex: 1 1 400px; /* Базовая ширина 400px, может расти и сжиматься */
+    flex: 1;
     background: #ffffff;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     text-align: center;
     position: relative;
-    min-width: 0; /* Важно для flex-контейнеров, чтобы текст переносился */
+    min-width: 0;
 }
 
 .invitation__content::before {
@@ -124,12 +127,11 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     line-height: 1.3;
-    word-wrap: break-word; /* Перенос длинных слов */
+    word-wrap: break-word;
 }
 
-/* Правая колонка: фото */
 .invitation__image {
-    flex: 1 1 300px;
+    flex: 1;
     min-width: 0;
 }
 
@@ -190,26 +192,20 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    width: 60px; /* Уменьшили длину линий для мобильных */
+    width: 60px;
     height: 1px;
     background: #d4c4b0;
 }
 
-.month-year::before {
-    right: 100%;
-    margin-right: 15px;
-}
-
-.month-year::after {
-    left: 100%;
-    margin-left: 15px;
-}
+.month-year::before { right: 100%; margin-right: 15px; }
+.month-year::after { left: 100%; margin-left: 15px; }
 
 .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 8px;
-    max-width: 100%; /* Календарь занимает всю доступную ширину контейнера */
+    width: 100%;
+    max-width: 400px;
     margin: 0 auto;
 }
 
@@ -260,10 +256,12 @@ body {
 .timeline {
     padding: 60px 20px;
     background: #fffef9;
+    width: 100%;
 }
 
 .timeline__container {
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -286,7 +284,10 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     margin-bottom: 30px;
+    width: 100%;
 }
+
+.timeline__item:last-child { margin-bottom: 0; }
 
 .timeline__image {
     flex: 1;
@@ -313,7 +314,7 @@ body {
     display: flex;
     align-items: baseline;
     gap: 15px;
-    flex-wrap: wrap; /* Позволяет времени и названию переноситься */
+    flex-wrap: wrap;
 }
 
 .event__time {
@@ -360,6 +361,7 @@ body {
     overflow: hidden;
     background: #faf8f5;
     margin-top: auto;
+    width: 100%;
 }
 
 .map-card__img {
@@ -387,7 +389,6 @@ body {
     gap: 4px;
 }
 
-/* Зеркальное расположение */
 .timeline__item--reverse .timeline__image { order: 2; }
 .timeline__item--reverse .timeline__content { order: 1; }
 
@@ -399,6 +400,7 @@ body {
     grid-template-rows: repeat(2, 1fr);
     gap: 8px;
     min-height: 300px;
+    width: 100%;
 }
 .gallery-item { width: 100%; height: 100%; border-radius: 6px; overflow: hidden; }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -409,6 +411,7 @@ body {
     padding: 60px 20px;
     text-align: center;
     background: #f7f2ec;
+    width: 100%;
 }
 .form h2 { font-size: 2.5rem; color: #a5835f; margin-bottom: 20px; }
 .form p { font-size: 1.1rem; max-width: 800px; margin: auto; color: #5b4c40; }
@@ -423,7 +426,10 @@ body {
     font-size: 1.1rem;
 }
 
-.count-wrap { position: relative; }
+.count-wrap { 
+    position: relative; 
+    width: 100%;
+}
 .count-wrap img { width: 100%; height: auto; display: block; }
 .countdown {
     position: absolute;
@@ -447,61 +453,78 @@ body {
 /* Планшеты и небольшие ноутбуки */
 @media (max-width: 1024px) {
     .invitation__container {
-        flex-direction: column; /* Ставим блоки друг под другом */
+        flex-direction: column;
         align-items: center;
     }
     
     .invitation__content, .invitation__image {
-        flex: 1 1 100%; /* Полная ширина */
-        max-width: 600px; /* Ограничиваем ширину для красоты */
+        width: 100%;
+        max-width: 600px;
     }
 }
 
-/* Мобильные устройства */
+/* Мобильные устройства (включая S24 Ultra и iPhone) */
 @media (max-width: 768px) {
+    /* Hero Section: Адаптируем под высоту экрана */
+    .hero {
+        min-height: 100svh; /* svh учитывает плавающие панели браузера на мобильных */
+    }
     .banner { font-size: 12vw; bottom: 80%; }
     .banner-message { font-size: 7vw; bottom: 20%; }
     .open-btn { font-size: 1rem; padding: 8px 20px; bottom: 5%; }
 
-    /* Invitation Mobile */
+    /* Invitation Mobile: Уменьшаем отступы */
     .invitation { padding: 40px 15px; }
     .invitation__content { padding: 25px 15px; }
     .invitation__content h1 { font-size: 1.4em; }
-    .month-year::before, .month-year::after { width: 30px; } /* Короткие линии у заголовка месяца */
+    .month-year::before, .month-year::after { width: 30px; }
     
-    /* Timeline Mobile */
+    /* Timeline Mobile: Компактнее */
+    .timeline { padding: 40px 15px; } /* Уменьшили padding секции */
+    .timeline__title { margin-bottom: 20px; font-size: 1.8em; }
+    
     .timeline__item {
-        flex-direction: column; /* Фото сверху, текст снизу */
+        flex-direction: column;
         padding: 20px;
         gap: 20px;
+        margin-bottom: 20px; /* Уменьшили отступ между блоками */
     }
     
     .timeline__item--reverse .timeline__image,
     .timeline__item--reverse .timeline__content {
-        order: unset; /* Сброс порядка для мобильного */
+        order: unset;
     }
     
     .event__header { flex-direction: column; align-items: flex-start; gap: 5px; }
     .event__time { font-size: 1.5em; }
     
     .timeline__gallery {
-        grid-template-columns: repeat(2, 1fr); /* 2 колонки вместо 3 */
+        grid-template-columns: repeat(2, 1fr);
         min-height: 200px;
     }
-    .gallery-item.span-wide { grid-column: span 1; } /* Широкие фото становятся обычными */
+    .gallery-item.span-wide { grid-column: span 1; }
 
     /* Form & Countdown Mobile */
-    .form h2 { font-size: 1.8rem; }
+    .form { padding: 40px 15px; }
+    .form h2 { font-size: 1.8rem; margin-bottom: 15px; }
+    .form p { font-size: 1rem; }
+    .form a { padding: 12px 25px; font-size: 1rem; margin-top: 20px; }
+    
     .grid { gap: 15px; }
     .num { font-size: 1.8rem; }
     .lab { font-size: 0.8rem; }
     .countdown { bottom: 5%; padding: 15px 5px; }
 }
 
-/* Очень маленькие экраны */
+/* Очень маленькие экраны (iPhone SE и т.д.) */
 @media (max-width: 480px) {
     .calendar { gap: 4px; }
     .day-header { font-size: 0.7em; }
     .day { font-size: 0.85em; }
     .map-card__footer { flex-direction: column; align-items: flex-start; }
+    
+    /* Дополнительное сжатие для самых узких экранов */
+    .invitation__content h1 { font-size: 1.2em; }
+    .timeline__title { font-size: 1.5em; }
+    .event__name { font-size: 1.1em; }
 }
