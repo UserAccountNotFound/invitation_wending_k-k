@@ -16,6 +16,7 @@ body {
     font-family: Georgia, serif;
     color: #5b4c40;
     line-height: 1.6;
+    overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
 }
 
 /* ========== HERO SECTION ========== */
@@ -41,6 +42,7 @@ body {
     color: white;
     font-family: 'Nicoletta Script';
     font-size: 8vw;
+    width: 90%; /* Ограничиваем ширину текста */
 }
 
 .banner-message {
@@ -52,6 +54,7 @@ body {
     color: white;
     font-family: 'Nicoletta Script';
     font-size: 5vw;
+    width: 90%;
 }
 
 .open-btn {
@@ -59,25 +62,25 @@ body {
     left: 50%;
     bottom: 7%;
     transform: translateX(-50%);
-    padding: 8px 20px;
+    padding: 10px 30px;
     border-radius: 40px;
     background: rgba(0, 0, 0, .25);
     border: 1px solid rgba(255, 255, 255, .8);
     color: white;
-    font-size: 5em;
+    font-size: 1.2rem; /* Используем rem вместо em для стабильности */
     text-decoration: none;
     backdrop-filter: blur(5px);
     transition: all 0.3s ease;
+    z-index: 10;
 }
 
 .open-btn:hover {
     background: rgba(0, 0, 0, .4);
-    transform: translateX(-50%) scale(1.05);
 }
 
 /* ========== INVITATION SECTION ========== */
 .invitation {
-    padding: 80px 20px;
+    padding: 60px 20px;
     background: #fffef9;
 }
 
@@ -89,16 +92,16 @@ body {
     align-items: flex-start;
 }
 
-/* Левая колонка: не сжимается, сохраняет фиксированную ширину */
+/* Левая колонка: гибкая, но не сжимается слишком сильно */
 .invitation__content {
-    flex: 0 0 auto;
-    min-width: 440px;
+    flex: 1 1 400px; /* Базовая ширина 400px, может расти и сжиматься */
     background: #ffffff;
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     text-align: center;
     position: relative;
+    min-width: 0; /* Важно для flex-контейнеров, чтобы текст переносился */
 }
 
 .invitation__content::before {
@@ -121,11 +124,12 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     line-height: 1.3;
+    word-wrap: break-word; /* Перенос длинных слов */
 }
 
-/* Правая колонка: фото сжимается при уменьшении экрана */
+/* Правая колонка: фото */
 .invitation__image {
-    flex: 1 1 auto;
+    flex: 1 1 300px;
     min-width: 0;
 }
 
@@ -178,6 +182,7 @@ body {
     text-transform: uppercase;
     position: relative;
     display: inline-block;
+    max-width: 100%;
 }
 
 .month-year::before,
@@ -185,36 +190,35 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    width: 80px;
+    width: 60px; /* Уменьшили длину линий для мобильных */
     height: 1px;
     background: #d4c4b0;
 }
 
 .month-year::before {
     right: 100%;
-    margin-right: 20px;
+    margin-right: 15px;
 }
 
 .month-year::after {
     left: 100%;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    max-width: 400px;
+    gap: 8px;
+    max-width: 100%; /* Календарь занимает всю доступную ширину контейнера */
     margin: 0 auto;
 }
 
 .day-header {
     color: #8b7355;
-    font-size: 0.85em;
+    font-size: 0.8em;
     font-weight: bold;
-    padding: 10px 5px;
+    padding: 5px 2px;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .day {
@@ -223,7 +227,7 @@ body {
     align-items: center;
     justify-content: center;
     color: #6b5b4f;
-    font-size: 1.1em;
+    font-size: 1em;
     border-radius: 50%;
     transition: all 0.3s ease;
     position: relative;
@@ -239,33 +243,22 @@ body {
 .day.special::before {
     content: '♡';
     position: absolute;
-    font-size: 2.5em;
+    font-size: 2em;
     color: #d4a5a5;
     opacity: 0.3;
     z-index: -1;
 }
 
-.day:hover:not(.special) {
-    background: #f0ebe3;
-    transform: scale(1.1);
-}
-
 @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
-.empty {
-    visibility: hidden;
-}
+.empty { visibility: hidden; }
 
 /* ========== TIMELINE SECTION ========== */
 .timeline {
-    padding: 80px 20px;
+    padding: 60px 20px;
     background: #fffef9;
 }
 
@@ -276,47 +269,23 @@ body {
 
 .timeline__title {
     text-align: center;
-    font-size: 2.2em;
+    font-size: 2em;
     color: #8b7355;
-    margin: 0 0 10px;
+    margin: 0 0 30px;
     font-weight: normal;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-.timeline__divider {
-    width: 60px;
-    height: 2px;
-    background: #d4c4b0;
-    margin: 0 auto 50px;
-    position: relative;
-}
-
-.timeline__divider::after {
-    content: '♡';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fffef9;
-    color: #d4c4b0;
-    padding: 0 10px;
-    font-size: 14px;
-}
-
 .timeline__item {
     display: flex;
-    gap: 40px;
+    gap: 30px;
     align-items: flex-start;
     background: #ffffff;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-    margin-bottom: 40px;
-}
-
-.timeline__item:last-child {
-    margin-bottom: 0;
+    margin-bottom: 30px;
 }
 
 .timeline__image {
@@ -344,16 +313,17 @@ body {
     display: flex;
     align-items: baseline;
     gap: 15px;
+    flex-wrap: wrap; /* Позволяет времени и названию переноситься */
 }
 
 .event__time {
-    font-size: 1.9em;
+    font-size: 1.8em;
     color: #a5835f;
     font-weight: bold;
 }
 
 .event__name {
-    font-size: 1.4em;
+    font-size: 1.3em;
     color: #4a3f35;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -363,20 +333,8 @@ body {
     width: 100%;
     height: 1px;
     background: #e8e0d5;
-    margin: 5px 0 15px;
+    margin: 10px 0;
     position: relative;
-}
-
-.event__divider::before {
-    content: '♡';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #d4c4b0;
-    font-size: 8px;
-    background: #ffffff;
-    padding-right: 5px;
 }
 
 .event__location {
@@ -385,14 +343,7 @@ body {
     gap: 10px;
     color: #6b5b4f;
     font-size: 1em;
-    line-height: 1.6;
-    margin-bottom: 5px;
-}
-
-.event__icon {
-    font-size: 1.2em;
-    margin-top: 2px;
-    color: #b9986d;
+    line-height: 1.5;
 }
 
 .event__description {
@@ -423,315 +374,134 @@ body {
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid #e8e0d5;
-}
-
-.map-card__address {
-    font-size: 0.85em;
-    color: #5b4c40;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .map-card__link {
     color: #8b7355;
     text-decoration: none;
-    font-size: 0.85em;
+    font-size: 0.9em;
     display: flex;
     align-items: center;
     gap: 4px;
-    white-space: nowrap;
-    transition: color 0.2s;
 }
 
-.map-card__link:hover {
-    color: #b9986d;
-    text-decoration: underline;
-}
+/* Зеркальное расположение */
+.timeline__item--reverse .timeline__image { order: 2; }
+.timeline__item--reverse .timeline__content { order: 1; }
 
-.map-card__arrow {
-    font-size: 0.9em;
-}
-
-/* Зеркальное расположение для timeline */
-.timeline__item--reverse .timeline__image {
-    order: 2;
-}
-
-.timeline__item--reverse .timeline__content {
-    order: 1;
-}
-
-/* Коллаж фотографий */
+/* Коллаж */
 .timeline__gallery {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 8px;
-    min-height: 400px;
+    min-height: 300px;
 }
+.gallery-item { width: 100%; height: 100%; border-radius: 6px; overflow: hidden; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-item.span-wide { grid-column: span 2; }
 
-.gallery-item {
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.gallery-item.span-wide {
-    grid-column: span 2;
-}
-
-/* ========== FORM SECTION ========== */
+/* ========== FORM & COUNTDOWN ========== */
 .form {
-    padding: 80px 20px;
+    padding: 60px 20px;
     text-align: center;
     background: #f7f2ec;
 }
-
-.form h2 {
-    font-size: 48px;
-    color: #a5835f;
-    margin-bottom: 20px;
-}
-
-.form p {
-    font-size: 22px;
-    max-width: 800px;
-    margin: auto;
-    color: #5b4c40;
-    line-height: 1.5;
-}
-
+.form h2 { font-size: 2.5rem; color: #a5835f; margin-bottom: 20px; }
+.form p { font-size: 1.1rem; max-width: 800px; margin: auto; color: #5b4c40; }
 .form a {
     display: inline-block;
     margin-top: 30px;
-    padding: 16px 36px;
+    padding: 15px 30px;
     background: #b9986d;
     color: white;
     border-radius: 40px;
     text-decoration: none;
-    font-size: 20px;
-    transition: all 0.3s ease;
+    font-size: 1.1rem;
 }
 
-.form a:hover {
-    background: #a5835f;
-    transform: translateY(-2px);
-}
-
-/* ========== COUNTDOWN SECTION ========== */
-.chat-wrap {
-    position: relative;
-}
-
-.chat-link {
-    position: absolute;
-    right: 10%;
-    top: 57%;
-    width: 36%;
-    height: 10%;
-    display: block;
-    z-index: 100;
-}
-
-.count-wrap {
-    position: relative;
-}
-
-.count-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
+.count-wrap { position: relative; }
+.count-wrap img { width: 100%; height: auto; display: block; }
 .countdown {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 7%;
-    width: 86%;
+    bottom: 10%;
+    width: 90%;
     background: rgba(0, 0, 0, .42);
     color: white;
     border-radius: 24px;
-    padding: 24px 10px;
+    padding: 20px 10px;
     text-align: center;
     backdrop-filter: blur(5px);
 }
+.grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.num { font-size: 2.5rem; font-weight: bold; }
+.lab { font-size: 0.9rem; text-transform: uppercase; }
 
-.grid {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
+/* ========== MOBILE OPTIMIZATION (MEDIA QUERIES) ========== */
 
-.num {
-    font-size: 58px;
-    font-weight: bold;
-}
-
-.lab {
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* ========== RESPONSIVE STYLES ========== */
+/* Планшеты и небольшие ноутбуки */
 @media (max-width: 1024px) {
-    .num {
-        font-size: 40px;
-    }
-    .lab {
-        font-size: 14px;
-    }
-    .form h2 {
-        font-size: 34px;
-    }
-    .form p {
-        font-size: 18px;
-    }
-    
-    /* Убрали flex-direction: column для invitation */
-    .invitation__content {
-        min-width: 380px;
-        padding: 30px 20px;
-    }
-    .invitation__content h1 {
-        font-size: 1.5em;
-    }
-    .invitation-text {
-        font-size: 1em;
-    }
-    
-    .calendar {
-        gap: 5px;
-    }
-    .day-header {
-        font-size: 0.75em;
-        padding: 5px 2px;
-    }
-    .day {
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 768px) {
-    .timeline__item {
-        flex-direction: column;
-        padding: 20px;
-        gap: 25px;
-    }
-    .timeline__item--reverse .timeline__image,
-    .timeline__item--reverse .timeline__content {
-        order: unset;
-    }
-    .timeline__item--reverse {
-        flex-direction: column;
-    }
-    .event__header {
-        flex-direction: column;
-        gap: 5px;
-    }
-    .event__time {
-        font-size: 1.6em;
-    }
-    .event__name {
-        font-size: 1.2em;
-    }
-    .map-card__footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    .timeline__gallery {
-        width: 100%;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-        min-height: auto;
-        max-height: 300px;
-    }
-    .gallery-item.span-wide {
-        grid-column: span 1;
-    }
-    
-    /* invitation: уменьшаем min-width, но сохраняем горизонтальное расположение */
-    .invitation__content {
-        min-width: 320px;
-        padding: 25px 15px;
-    }
-    .invitation__content h1 {
-        font-size: 1.4em;
-    }
-}
-
-@media (max-width: 600px) {
-    .banner {
-        font-size: 10vw;
-        bottom: 80%;
-    }
-    .banner-message {
-        font-size: 6vw;
-        bottom: 20%;
-    }
-    .open-btn {
-        font-size: 3em;
-        bottom: 5%;
-    }
-    .invitation {
-        padding: 40px 15px;
-    }
     .invitation__container {
+        flex-direction: column; /* Ставим блоки друг под другом */
+        align-items: center;
+    }
+    
+    .invitation__content, .invitation__image {
+        flex: 1 1 100%; /* Полная ширина */
+        max-width: 600px; /* Ограничиваем ширину для красоты */
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+    .banner { font-size: 12vw; bottom: 80%; }
+    .banner-message { font-size: 7vw; bottom: 20%; }
+    .open-btn { font-size: 1rem; padding: 8px 20px; bottom: 5%; }
+
+    /* Invitation Mobile */
+    .invitation { padding: 40px 15px; }
+    .invitation__content { padding: 25px 15px; }
+    .invitation__content h1 { font-size: 1.4em; }
+    .month-year::before, .month-year::after { width: 30px; } /* Короткие линии у заголовка месяца */
+    
+    /* Timeline Mobile */
+    .timeline__item {
+        flex-direction: column; /* Фото сверху, текст снизу */
+        padding: 20px;
         gap: 20px;
     }
-    .invitation__content {
-        min-width: 280px;
-        padding: 20px 12px;
+    
+    .timeline__item--reverse .timeline__image,
+    .timeline__item--reverse .timeline__content {
+        order: unset; /* Сброс порядка для мобильного */
     }
-    .invitation__content h1 {
-        font-size: 1.2em;
+    
+    .event__header { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .event__time { font-size: 1.5em; }
+    
+    .timeline__gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки вместо 3 */
+        min-height: 200px;
     }
-    .invitation-text {
-        font-size: 0.95em;
-    }
-    .month-year {
-        font-size: 1.2em;
-    }
-    .calendar {
-        gap: 3px;
-    }
-    .day-header {
-        font-size: 0.7em;
-        padding: 3px 1px;
-    }
-    .day {
-        font-size: 0.85em;
-    }
-    .timeline__title {
-        font-size: 1.6em;
-    }
-    .countdown {
-        padding: 15px 5px;
-        bottom: 5%;
-    }
-    .grid {
-        gap: 15px;
-    }
-    .num {
-        font-size: 28px;
-    }
-    .lab {
-        font-size: 12px;
-    }
+    .gallery-item.span-wide { grid-column: span 1; } /* Широкие фото становятся обычными */
+
+    /* Form & Countdown Mobile */
+    .form h2 { font-size: 1.8rem; }
+    .grid { gap: 15px; }
+    .num { font-size: 1.8rem; }
+    .lab { font-size: 0.8rem; }
+    .countdown { bottom: 5%; padding: 15px 5px; }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+    .calendar { gap: 4px; }
+    .day-header { font-size: 0.7em; }
+    .day { font-size: 0.85em; }
+    .map-card__footer { flex-direction: column; align-items: flex-start; }
 }
