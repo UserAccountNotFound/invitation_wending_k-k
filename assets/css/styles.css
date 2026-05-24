@@ -118,7 +118,7 @@ body:not(.lock-scroll) #site {
     width: 100%;
 }
 
-.invitation__container {
+.invitation_container {
     max-width: 1100px;
     width: 100%;
     margin: 0 auto;
@@ -127,7 +127,7 @@ body:not(.lock-scroll) #site {
     align-items: flex-start;
 }
 
-.invitation__content {
+.invitation_content {
     flex: 1;
     background: #ffffff;
     padding: 40px;
@@ -138,7 +138,7 @@ body:not(.lock-scroll) #site {
     min-width: 0;
 }
 
-.invitation__content::before {
+.invitation_content::before {
     content: '';
     position: absolute;
     top: 15px;
@@ -150,7 +150,7 @@ body:not(.lock-scroll) #site {
     pointer-events: none;
 }
 
-.invitation__content h1 {
+.invitation_content h1 {
     color: #8b7355;
     font-size: 2em;
     margin-bottom: 10px;
@@ -161,12 +161,12 @@ body:not(.lock-scroll) #site {
     word-wrap: break-word;
 }
 
-.invitation__image {
+.invitation_image {
     flex: 1;
     min-width: 0;
 }
 
-.invitation__image img {
+.invitation_image img {
     width: 90%;
     height: auto;
     display: block;
@@ -180,11 +180,11 @@ body:not(.lock-scroll) #site {
     }
     
     /* Центрируем контент, когда картинка исчезает */
-    .invitation__container {
+    .invitation_container {
         justify-content: center;
     }
     
-    .invitation__content {
+    .invitation_content {
         max-width: 600px; /* Ограничиваем ширину текста для красоты */
     }
 }
@@ -304,13 +304,13 @@ body:not(.lock-scroll) #site {
     width: 100%;
 }
 
-.timeline__container {
+.timeline_container {
     max-width: 1100px;
     width: 100%;
     margin: 0 auto;
 }
 
-.timeline__title {
+.timeline_title {
     text-align: center;
     font-size: 2em;
     color: #8b7355;
@@ -320,7 +320,7 @@ body:not(.lock-scroll) #site {
     text-transform: uppercase;
 }
 
-.timeline__item {
+.timeline_item {
     display: flex;
     gap: 30px;
     align-items: flex-start;
@@ -332,14 +332,14 @@ body:not(.lock-scroll) #site {
     width: 100%;
 }
 
-.timeline__item:last-child { margin-bottom: 0; }
+.timeline_item:last-child { margin-bottom: 0; }
 
-.timeline__image {
+.timeline_image {
     flex: 1;
     min-width: 0;
 }
 
-.timeline__image img {
+.timeline_image img {
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -347,7 +347,7 @@ body:not(.lock-scroll) #site {
     object-fit: cover;
 }
 
-.timeline__content {
+.timeline_content {
     flex: 1;
     min-width: 0;
     display: flex;
@@ -355,27 +355,27 @@ body:not(.lock-scroll) #site {
     gap: 10px;
 }
 
-.event__header {
+.event_header {
     display: flex;
     align-items: baseline;
     gap: 15px;
     flex-wrap: wrap;
 }
 
-.event__time {
+.event_time {
     font-size: 1.8em;
     color: #a5835f;
     font-weight: bold;
 }
 
-.event__name {
+.event_name {
     font-size: 1.3em;
     color: #4a3f35;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.event__divider {
+.event_divider {
     width: 100%;
     height: 1px;
     background: #e8e0d5;
@@ -383,7 +383,7 @@ body:not(.lock-scroll) #site {
     position: relative;
 }
 
-.event__location {
+.event_location {
     display: flex;
     align-items: flex-start;
     gap: 10px;
@@ -392,13 +392,13 @@ body:not(.lock-scroll) #site {
     line-height: 1.5;
 }
 
-.event__icon {
+.event_icon {
     font-size: 1.2em;
     margin-top: 2px;
     color: #b9986d;
 }
 
-.event__description {
+.event_description {
     color: #5b4c40;
     font-size: 0.95em;
     line-height: 1.6;
@@ -415,13 +415,13 @@ body:not(.lock-scroll) #site {
     width: 100%;
 }
 
-.map-card__img {
+.map-card_img {
     width: 100%;
     height: auto;
     display: block;
 }
 
-.map-card__footer {
+.map-card_footer {
     padding: 12px 15px;
     display: flex;
     justify-content: space-between;
@@ -431,7 +431,7 @@ body:not(.lock-scroll) #site {
     gap: 10px;
 }
 
-.map-card__link {
+.map-card_link {
     color: #8b7355;
     text-decoration: none;
     font-size: 0.9em;
@@ -440,11 +440,11 @@ body:not(.lock-scroll) #site {
     gap: 4px;
 }
 
-.timeline__item--reverse .timeline__image { order: 2; }
-.timeline__item--reverse .timeline__content { order: 1; }
+.timeline_item--reverse .timeline_image { order: 2; }
+.timeline_item--reverse .timeline_content { order: 1; }
 
 /* Коллаж */
-.timeline__gallery {
+.timeline_gallery {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -502,12 +502,12 @@ body:not(.lock-scroll) #site {
 /* ========== MOBILE OPTIMIZATION ========== */
 
 @media (max-width: 1024px) {
-    .invitation__container {
+    .invitation_container {
         flex-direction: column;
         align-items: center;
     }
     
-    .invitation__content, .invitation__image {
+    .invitation_content, .invitation_image {
         width: 100%;
         max-width: 600px;
     }
@@ -520,28 +520,28 @@ body:not(.lock-scroll) #site {
     .open-btn { font-size: 1rem; padding: 8px 20px; top: 85%; }
 
     .invitation { padding: 40px 15px; }
-    .invitation__content { padding: 25px 15px; }
-    .invitation__content h1 { font-size: 1.4em; }
+    .invitation_content { padding: 25px 15px; }
+    .invitation_content h1 { font-size: 1.4em; }
     
     .timeline { padding: 40px 15px; }
-    .timeline__title { margin-bottom: 20px; font-size: 1.8em; }
+    .timeline_title { margin-bottom: 20px; font-size: 1.8em; }
     
-    .timeline__item {
+    .timeline_item {
         flex-direction: column;
         padding: 20px;
         gap: 20px;
         margin-bottom: 20px;
     }
     
-    .timeline__item--reverse .timeline__image,
-    .timeline__item--reverse .timeline__content {
+    .timeline_item--reverse .timeline_image,
+    .timeline_item--reverse .timeline_content {
         order: unset;
     }
     
-    .event__header { flex-direction: column; align-items: flex-start; gap: 5px; }
-    .event__time { font-size: 1.5em; }
+    .event_header { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .event_time { font-size: 1.5em; }
     
-    .timeline__gallery {
+    .timeline_gallery {
         grid-template-columns: repeat(2, 1fr);
         min-height: 200px;
     }
@@ -562,9 +562,9 @@ body:not(.lock-scroll) #site {
     .calendar { gap: 4px; }
     .day-header { font-size: 0.7em; }
     .day { font-size: 0.85em; }
-    .map-card__footer { flex-direction: column; align-items: flex-start; }
+    .map-card_footer { flex-direction: column; align-items: flex-start; }
     
-    .invitation__content h1 { font-size: 1.2em; }
-    .timeline__title { font-size: 1.5em; }
-    .event__name { font-size: 1.1em; }
+    .invitation_content h1 { font-size: 1.2em; }
+    .timeline_title { font-size: 1.5em; }
+    .event_name { font-size: 1.1em; }
 }
