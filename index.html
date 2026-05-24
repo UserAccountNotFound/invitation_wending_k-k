@@ -2,22 +2,23 @@
 <html lang="ru">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width">
 	<title>Кирилл & Кристина</title>
 	<link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
 </head>
 
-<body>
+<body class="lock-scroll">
 
 	<audio id="music" autoplay loop playsinline>
 		<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8d050f5fa.mp3?filename="romantic-piano-114097.mp3" type="audio/mpeg">
 	</audio>
 
 	<div class="hero">
-		<img src="./img/1.jpg">
+		<img src="./img/start.jpg">
 		<div class="banner">Кирилл  &  Кристина</div>
-		<div class="banner-message">22 августа 2026 <br> Мы будем счастливы разделить этот день с Вами</div>
-		<a href="#site" class="open-btn" onclick="document.getElementById('music').play()">ОТКРЫТЬ</a>
+		<div class="banner-date">22 августа 2026</div>
+		<div class="banner-message">Мы будем счастливы разделить этот день с Вами</div>
+		<a href="#site" id="open-btn" class="open-btn">ОТКРЫТЬ</a>
 	</div>
 
 	<div id="site">
@@ -260,29 +261,61 @@
 
 	</div>
 
-<script>
-	const weddingDate = new Date("2026-08-22T00:00:00").getTime();
+	    <!-- JAVASCRIPT ДЛЯ РАЗБЛОКИРОВКИ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openBtn = document.getElementById('open-btn');
+            const heroSection = document.querySelector('.hero');
+            
+            if (openBtn) {
+                openBtn.addEventListener('click', function(e) {
+                    e.preventDefault(); // Предотвращаем стандартный прыжок по якорю
+                    
+                    // 1. Убираем блокировку прокрутки
+                    document.body.classList.remove('lock-scroll');
+                    
+                    // 2. Убираем эффект затемнения с hero (если добавляли)
+                    if (heroSection) {
+                        heroSection.classList.remove('locked');
+                    }
 
-	function updateCountdown(){
-		const now = new Date().getTime();
-		const distance = weddingDate - now;
+                    // 3. Плавный скролл к контенту
+                    const siteSection = document.getElementById('site');
+                    if (siteSection) {
+                        siteSection.scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            }
+        });
+    </script>
 
-		document.getElementById("days").innerHTML =
-		String(Math.floor(distance/(1000*60*60*24))).padStart(3,'0');
+	<!-- JAVASCRIPT ОБРАТНОГО ОТСЧЕТА -->
+	<script>
+		const weddingDate = new Date("2026-08-22T00:00:00").getTime();
 
-		document.getElementById("hours").innerHTML =
-		String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
+		function updateCountdown(){
+			const now = new Date().getTime();
+			const distance = weddingDate - now;
 
-		document.getElementById("minutes").innerHTML =
-		String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,'0');
+			document.getElementById("days").innerHTML =
+			String(Math.floor(distance/(1000*60*60*24))).padStart(3,'0');
 
-		document.getElementById("seconds").innerHTML =
-		String(Math.floor((distance%(1000*60))/1000)).padStart(2,'0');
-	}
+			document.getElementById("hours").innerHTML =
+			String(Math.floor((distance%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
 
-	updateCountdown();
-	setInterval(updateCountdown,1000);
-</script>
+			document.getElementById("minutes").innerHTML =
+			String(Math.floor((distance%(1000*60*60))/(1000*60))).padStart(2,'0');
+
+			document.getElementById("seconds").innerHTML =
+			String(Math.floor((distance%(1000*60))/1000)).padStart(2,'0');
+		}
+
+		updateCountdown();
+		setInterval(updateCountdown,1000);
+	</script>
 
 </body>
 </html>
