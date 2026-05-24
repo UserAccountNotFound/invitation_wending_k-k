@@ -553,8 +553,8 @@ body:not(.lock-scroll) #site {
     .form a { padding: 12px 25px; font-size: 1rem; margin-top: 20px; }
     
     .grid { gap: 15px; }
-    .num { font-size: 1.8rem; }
-    .lab { font-size: 0.8rem; }
+    .num { font-size: 1.3rem; }
+    .lab { font-size: 0.7rem; }
     .countdown { bottom: 5%; padding: 15px 5px; }
 }
 
