@@ -149,7 +149,7 @@ html, body {
 }
 
 .invitation__image img {
-    width: 100%;
+    width: 90%;
     height: auto;
     display: block;
     object-fit: cover;
@@ -476,6 +476,10 @@ html, body {
 
 /* Мобильные устройства (включая S24 Ultra и iPhone) */
 @media (max-width: 768px) {
+    /*Скрываем элементы в мобильной верстве */
+    .desktop-only {
+        display: none;
+    }
     /* Hero Section: Адаптируем под высоту экрана */
     .hero {
         min-height: 100svh; /* svh учитывает плавающие панели браузера на мобильных */
