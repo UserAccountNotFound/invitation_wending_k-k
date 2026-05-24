@@ -90,25 +90,36 @@ body:not(.lock-scroll) #site {
     width: 90%;
 }
 
-.open-btn {
+/* Swipe hint вместо кнопки */
+.swipe-hint {
     position: absolute;
     left: 50%;
     top: 90%;
     transform: translateX(-50%);
-    padding: 10px 25px;
-    border-radius: 40px;
-    background: rgba(0, 0, 0, .25);
-    border: 1px solid rgba(255, 255, 255, .8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     color: white;
-    font-size: 1rem;
-    text-decoration: none;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
     z-index: 10;
+    animation: bounce 2s infinite;
 }
 
-.open-btn:hover {
-    background: rgba(0, 0, 0, .4);
+.swipe-arrow {
+    font-size: 2rem;
+    opacity: 0.9;
+}
+
+.swipe-text {
+    font-family: 'Nicoletta Script';
+    font-size: 1.2rem;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
 }
 
 /* ========== INVITATION SECTION ========== */
@@ -517,7 +528,9 @@ body:not(.lock-scroll) #site {
     .banner { font-size: 14vw; top: 4%; }
     .banner-date { font-size: 7vw; top: 65%; }
     .banner-message { font-size: 7vw; top: 70%; }
-    .open-btn { font-size: 1rem; padding: 8px 20px; top: 85%; }
+    .swipe-hint { top: 85%; }
+    .swipe-arrow { font-size: 1.5rem; }
+    .swipe-text { font-size: 1rem; }
 
     .invitation { padding: 40px 15px; }
     .invitation__content { padding: 25px 15px; }

@@ -13,12 +13,15 @@
 		<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8d050f5fa.mp3?filename="romantic-piano-114097.mp3" type="audio/mpeg">
 	</audio>
 
-	<div class="hero">
+	<div class="hero" id="hero-slider">
 		<img src="./img/start.jpg">
 		<div class="banner">Кирилл  &  Кристина</div>
 		<div class="banner-date">22 августа 2026</div>
 		<div class="banner-message">Мы будем счастливы разделить этот день с Вами</div>
-		<a href="#site" id="open-btn" class="open-btn">ОТКРЫТЬ</a>
+		<div class="swipe-hint">
+			<span class="swipe-arrow">↓</span>
+			<span class="swipe-text">Листайте вниз</span>
+		</div>
 	</div>
 
 	<div id="site">
@@ -261,28 +264,23 @@
 
 	</div>
 
-	    <!-- JAVASCRIPT ДЛЯ РАЗБЛОКИРОВКИ -->
+        <!-- JAVASCRIPT ДЛЯ РАЗБЛОКИРОВКИ -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const openBtn = document.getElementById('open-btn');
+            const heroSlider = document.getElementById('hero-slider');
             const heroSection = document.querySelector('.hero');
-            
-            if (openBtn) {
-                openBtn.addEventListener('click', function(e) {
-                    e.preventDefault(); // Предотвращаем стандартный прыжок по якорю
-                    
-                    // 1. Убираем блокировку прокрутки
-                    document.body.classList.remove('lock-scroll');
-                    
-                    // 2. Убираем эффект затемнения с hero (если добавляли)
-                    if (heroSection) {
-                        heroSection.classList.remove('locked');
-                    }
 
-                    // 3. Плавный скролл к контенту
+            if (heroSlider) {
+                heroSlider.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Убираем блокировку прокрутки
+                    document.body.classList.remove('lock-scroll');
+
+                    // Плавный скролл к контенту
                     const siteSection = document.getElementById('site');
                     if (siteSection) {
-                        siteSection.scrollIntoView({ 
+                        siteSection.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
                         });
