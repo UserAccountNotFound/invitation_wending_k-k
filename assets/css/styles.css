@@ -4,10 +4,10 @@
     src: local("Nicoletta Script"), url('../../assets/fonts/Nicoletta Script SHA_1.otf');
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
