@@ -82,8 +82,8 @@ body:not(.lock-scroll) #site {
   touch-action: none;
   overflow: hidden;
   z-index: 10;
-  opacity: 1; /*Начальная видимость */
-  transition: opacity 0.4s ease, transform 0.4s ease; /*Плавное скрытие */
+  opacity: 1;                                           /*Начальная видимость */
+  transition: opacity 0.4s ease, transform 0.4s ease;   /*Плавное скрытие */
 }
 .slider-track {
   position: absolute;
