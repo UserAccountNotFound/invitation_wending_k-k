@@ -1,9 +1,18 @@
 @font-face {
-  font-family: 'Nicoletta Script';
+  font-family: 'Nicoletta';
   src: url('../../assets/fonts/Nicoletta Script SHA_1.otf');
   font-display: swap;
 }
-
+@font-face {
+  font-family: 'Majestic';
+  src: url('../../assets/fonts/Majestic_Typeface/Majestic_0.ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sacramento';
+  src: url('../../assets/fonts/Sacramento_Cyrillic/Sacramento.ttf');
+  font-display: swap;
+}
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -55,13 +64,12 @@ body:not(.lock-scroll) #site {
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  font-family: 'Nicoletta Script', cursive;
   text-shadow: 0 2px 8px rgba(0,0,0,0.4);
   width: 90%;
 }
-.banner { font-size: 8vw; top: 1%; }
-.banner-date { font-size: 4vw; top: 62%; }
-.banner-message { font-size: 4vw; top: 76%; }
+.banner { font-size: 8vw; top: 1%; font-family: 'Majestic';}
+.banner-date { font-size: 3vw; top: 70%; }
+.banner-message { font-size: 2vw; top: 80%; }
 
 /* ========== UNLOCK SLIDER ========== */
 .unlock-slider {
