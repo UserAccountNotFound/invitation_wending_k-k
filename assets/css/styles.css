@@ -119,9 +119,9 @@ body:not(.lock-scroll) #site {
   position: relative;
   z-index: 1;
   width: 100%;
-  text-align: center;
+  text-align: right;
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   text-shadow: 0 1px 4px rgba(0,0,0,0.3);
@@ -150,7 +150,7 @@ body:not(.lock-scroll) #site {
   background: #fffef9;
   width: 100%;
 }
-.invitation__container {
+.invitation_container {
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
@@ -158,7 +158,7 @@ body:not(.lock-scroll) #site {
   gap: 40px;
   align-items: flex-start;
 }
-.invitation__content {
+.invitation_content {
   flex: 1;
   background: #ffffff;
   padding: 40px;
@@ -168,7 +168,7 @@ body:not(.lock-scroll) #site {
   position: relative;
   min-width: 0;
 }
-.invitation__content::before {
+.invitation_content::before {
   content: '';
   position: absolute;
   inset: 15px;
@@ -176,7 +176,7 @@ body:not(.lock-scroll) #site {
   border-radius: 8px;
   pointer-events: none;
 }
-.invitation__content h1 {
+.invitation_content h1 {
   color: #8b7355;
   font-size: 2em;
   margin-bottom: 10px;
@@ -184,8 +184,8 @@ body:not(.lock-scroll) #site {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-.invitation__image { flex: 1; min-width: 0; }
-.invitation__image img {
+.invitation_image { flex: 1; min-width: 0; }
+.invitation_image img {
   width: 100%;
   height: auto;
   display: block;
@@ -279,11 +279,11 @@ body:not(.lock-scroll) #site {
 
 /* TIMELINE */
 .timeline { padding: 60px 20px; background: #fffef9; }
-.timeline__container {
+.timeline_container {
   max-width: 1100px;
   margin: 0 auto;
 }
-.timeline__title {
+.timeline_title {
   text-align: center;
   font-size: 2em;
   color: #8b7355;
@@ -292,7 +292,7 @@ body:not(.lock-scroll) #site {
   letter-spacing: 3px;
   text-transform: uppercase;
 }
-.timeline__item {
+.timeline_item {
   display: flex;
   gap: 30px;
   align-items: flex-start;
@@ -302,22 +302,22 @@ body:not(.lock-scroll) #site {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   margin-bottom: 30px;
 }
-.timeline__item:last-child { margin-bottom: 0; }
-.timeline__image, .timeline__content { flex: 1; min-width: 0; }
-.timeline__image img {
+.timeline_item:last-child { margin-bottom: 0; }
+.timeline_image, .timeline_content { flex: 1; min-width: 0; }
+.timeline_image img {
   width: 100%;
   height: auto;
   border-radius: 8px;
   display: block;
   object-fit: cover;
 }
-.timeline__content { display: flex; flex-direction: column; gap: 10px; }
+.timeline_content { display: flex; flex-direction: column; gap: 10px; }
 
-.event__header { display: flex; align-items: baseline; gap: 15px; flex-wrap: wrap; }
-.event__time { font-size: 1.8em; color: #a5835f; font-weight: bold; }
-.event__name { font-size: 1.3em; color: #4a3f35; text-transform: uppercase; letter-spacing: 1px; }
-.event__location { display: flex; align-items: flex-start; gap: 10px; color: #6b5b4f; line-height: 1.5; }
-.event__description { color: #5b4c40; font-style: italic; margin: 10px 0 20px; }
+.event_header { display: flex; align-items: baseline; gap: 15px; flex-wrap: wrap; }
+.event_time { font-size: 1.8em; color: #a5835f; font-weight: bold; }
+.event_name { font-size: 1.3em; color: #4a3f35; text-transform: uppercase; letter-spacing: 1px; }
+.event_location { display: flex; align-items: flex-start; gap: 10px; color: #6b5b4f; line-height: 1.5; }
+.event_description { color: #5b4c40; font-style: italic; margin: 10px 0 20px; }
 
 .map-card {
   border: 1px solid #e8e0d5;
@@ -325,7 +325,7 @@ body:not(.lock-scroll) #site {
   background: #faf8f5;
   margin-top: auto;
 }
-.map-card__footer {
+.map-card_footer {
   padding: 12px 15px;
   display: flex;
   justify-content: space-between;
@@ -336,15 +336,15 @@ body:not(.lock-scroll) #site {
   font-size: 0.9em;
   color: #8b7355;
 }
-.map-card__link {
+.map-card_link {
   color: #8b7355;
   text-decoration: none;
   font-weight: 500;
 }
-.timeline__item--reverse .timeline__image { order: 2; }
-.timeline__item--reverse .timeline__content { order: 1; }
+.timeline_item--reverse .timeline_image { order: 2; }
+.timeline_item--reverse .timeline_content { order: 1; }
 
-.timeline__gallery {
+.timeline_gallery {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -398,8 +398,8 @@ body:not(.lock-scroll) #site {
 
 /* MOBILE */
 @media (max-width: 1024px) {
-  .invitation__container { flex-direction: column; align-items: center; }
-  .invitation__content, .invitation__image { max-width: 600px; }
+  .invitation_container { flex-direction: column; align-items: center; }
+  .invitation_content, .invitation_image { max-width: 600px; }
 }
 @media (max-width: 768px) {
   .banner { font-size: 14vw; top: 4%; }
@@ -408,13 +408,13 @@ body:not(.lock-scroll) #site {
   .banner-message { top: 72%; }
   .open-btn { top: 85%; padding: 10px 20px; }
   .invitation, .timeline, .form { padding: 40px 15px; }
-  .invitation__content { padding: 25px 15px; }
-  .timeline__item { flex-direction: column; padding: 20px; gap: 20px; }
-  .timeline__item--reverse .timeline__image,
-  .timeline__item--reverse .timeline__content { order: unset; }
-  .event__header { flex-direction: column; gap: 5px; }
-  .event__time { font-size: 1.5em; }
-  .timeline__gallery { grid-template-columns: repeat(2, 1fr); min-height: 200px; }
+  .invitation_content { padding: 25px 15px; }
+  .timeline_item { flex-direction: column; padding: 20px; gap: 20px; }
+  .timeline_item--reverse .timeline_image,
+  .timeline_item--reverse .timeline_content { order: unset; }
+  .event_header { flex-direction: column; gap: 5px; }
+  .event_time { font-size: 1.5em; }
+  .timeline_gallery { grid-template-columns: repeat(2, 1fr); min-height: 200px; }
   .gallery-item.span-wide { grid-column: span 1; }
   .form h2 { font-size: 1.8rem; }
   .form a { padding: 12px 25px; }
@@ -425,7 +425,7 @@ body:not(.lock-scroll) #site {
   .calendar { gap: 4px; }
   .day-header { font-size: 0.7em; }
   .day { font-size: 0.85em; }
-  .invitation__content h1 { font-size: 1.2em; }
-  .timeline__title { font-size: 1.5em; }
-  .event__name { font-size: 1.1em; }
+  .invitation_content h1 { font-size: 1.2em; }
+  .timeline_title { font-size: 1.5em; }
+  .event_name { font-size: 1.1em; }
 }
