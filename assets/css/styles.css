@@ -68,7 +68,7 @@ body:not(.lock-scroll) #site {
   position: absolute;
   left: 50%;
   top: 90%;
-  transform: translateX(-50%) translateY(0); /* Добавлено Y */
+  transform: translateX(-50%) translateY(0);
   width: min(85vw, 320px);
   height: 54px;
   background: rgba(255, 255, 255, 0.12);
