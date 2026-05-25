@@ -4,7 +4,6 @@
   font-display: swap;
 }
 
-/* ✅ ИСПРАВЛЕНО: Добавлен отсутствующий селектор */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -60,8 +59,8 @@ body:not(.lock-scroll) #site {
   text-shadow: 0 2px 8px rgba(0,0,0,0.4);
   width: 90%;
 }
-.banner { font-size: 8vw; top: 10%; }
-.banner-date { font-size: 4vw; top: 65%; }
+.banner { font-size: 8vw; top: 1%; }
+.banner-date { font-size: 4vw; top: 62%; }
 .banner-message { font-size: 4vw; top: 76%; }
 
 .open-btn {
@@ -326,6 +325,9 @@ body:not(.lock-scroll) #site {
   border-radius: 24px;
   padding: 20px;
   backdrop-filter: blur(5px);
+}
+.countdown h2 {
+    text-align: center;
 }
 .grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .num { font-size: 2.5rem; font-weight: bold; display: block; }
