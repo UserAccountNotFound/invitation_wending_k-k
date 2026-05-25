@@ -354,7 +354,7 @@ body:not(.lock-scroll) #site {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 180px);
+  grid-template-rows: repeat(2, 280px);
   gap: 8px;
 }
 .gallery-item { border-radius: 6px; overflow: hidden; }
