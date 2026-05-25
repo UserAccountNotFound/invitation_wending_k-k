@@ -417,12 +417,12 @@ body:not(.lock-scroll) #site {
 }
 @media (max-width: 768px) {
   .banner { font-size: 10vw; top: 3%; }
-  .banner-date, .banner-message { font-size: 3vw; }
-  .banner-date { top: 65%; }
-  .banner-message { top: 72%; }
+  .banner-date, .banner-message { font-size: 4 vw; }
+  .banner-date { top: 75%; }
+  .banner-message { top: 82%; }
   .open-btn { top: 85%; padding: 10px 20px; }
   .invitation, .timeline, .form { padding: 40px 15px; }
-  .invitation_content { padding: 25px 15px; }
+  .invitation_content { padding: 25px 15px; }             
   .timeline_item { flex-direction: column; padding: 20px; gap: 20px; }
   .timeline_item--reverse .timeline_image,
   .timeline_item--reverse .timeline_content { order: unset; }
