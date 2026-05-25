@@ -354,7 +354,7 @@ body:not(.lock-scroll) #site {
   flex: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 280px);
+  grid-template-rows: repeat(2, 300px);
   gap: 8px;
 }
 .gallery-item { border-radius: 6px; overflow: hidden; }
@@ -420,8 +420,8 @@ body:not(.lock-scroll) #site {
   .timeline_item--reverse .timeline_content { order: unset; }
   .event_header { flex-direction: column; gap: 5px; }
   .event_time { font-size: 1.5em; }
-  .timeline_gallery { grid-template-columns: repeat(2, 1fr); min-height: 200px; }
-  .gallery-item.span-wide { grid-column: span 1; }
+  .timeline_gallery { grid-template-columns: repeat(3, 1fr); min-height: 50px; }
+  .gallery-item.span-wide { grid-column: span 2; }
   .form h2 { font-size: 1.8rem; }
   .form a { padding: 12px 25px; }
   .num { font-size: 1.8rem; }
