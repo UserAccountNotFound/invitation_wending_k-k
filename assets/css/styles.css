@@ -138,9 +138,9 @@ body:not(.lock-scroll) #site {
   transition: opacity 0.2s;
 }
 .unlock-slider.unlocked {
-  opacity: 0; /* Полная прозрачность */
+  opacity: 0;                                   /* Полная прозрачность */
   transform: translateX(-50%) translateY(25px); /* Легкое смещение вниз */
-  pointer-events: none; /* Отключаем клики */
+  pointer-events: none;                         /* Отключаем клики */
   cursor: default;
 }
 .unlock-slider.unlocked .slider-track { width: 100% !important; }
