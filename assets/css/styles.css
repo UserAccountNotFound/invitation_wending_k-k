@@ -416,8 +416,8 @@ body:not(.lock-scroll) #site {
   .invitation_content, .invitation_image { max-width: 600px; }
 }
 @media (max-width: 768px) {
-  .banner { font-size: 14vw; top: 4%; }
-  .banner-date, .banner-message { font-size: 7vw; }
+  .banner { font-size: 12vw; top: 4%; }
+  .banner-date, .banner-message { font-size: 5vw; }
   .banner-date { top: 65%; }
   .banner-message { top: 72%; }
   .open-btn { top: 85%; padding: 10px 20px; }
