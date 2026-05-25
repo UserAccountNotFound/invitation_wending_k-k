@@ -7,6 +7,75 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <meta name="description" content="Приглашение на свадьбу Кирилла и Кристины. 22 августа 2026 года, Краснодар.">
 </head>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+	const slider = document.getElementById('unlockSlider');
+	const thumb = document.getElementById('sliderThumb');
+	const track = slider.querySelector('.slider-track');
+	let startX = 0, currentX = 0, maxDrag = 0, isDragging = false;
+
+	// Рассчитываем максимальное смещение
+	const calcMaxDrag = () => maxDrag = slider.offsetWidth - thumb.offsetWidth - 14;
+	window.addEventListener('load', calcMaxDrag);
+	window.addEventListener('resize', calcMaxDrag);
+
+	const startDrag = (e) => {
+		isDragging = true;
+		startX = e.clientX ?? e.touches[0].clientX;
+		thumb.classList.add('active');
+		thumb.style.transition = 'none';
+	};
+
+	const moveDrag = (e) => {
+		if (!isDragging) return;
+		e.preventDefault();
+		const x = e.clientX ?? e.touches[0].clientX;
+		let diff = x - startX;
+		diff = Math.max(0, Math.min(diff, maxDrag));
+		currentX = diff;
+		thumb.style.transform = `translateY(-50%) translateX(${currentX}px)`;
+		track.style.width = `${(currentX / maxDrag) * 100}%`;
+	};
+
+	const endDrag = () => {
+		if (!isDragging) return;
+		isDragging = false;
+		thumb.classList.remove('active');
+		thumb.style.transition = 'transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)';
+		track.style.transition = 'width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)';
+
+		// Если свайпнули >85% → открываем, иначе → возврат
+		if (currentX > maxDrag * 0.85) {
+		unlock();
+		} else {
+		currentX = 0;
+		thumb.style.transform = 'translateY(-50%) translateX(0)';
+		track.style.width = '0%';
+		}
+	};
+
+	const unlock = () => {
+		currentX = maxDrag;
+		thumb.style.transform = `translateY(-50%) translateX(${maxDrag}px)`;
+		track.style.width = '100%';
+
+		slider.classList.add('unlocked');
+
+		// Плавно разблокируем скролл и прокручиваем к контенту
+		setTimeout(() => {
+		document.body.classList.remove('lock-scroll');
+		document.getElementById('site').scrollIntoView({ behavior: 'smooth' });
+		}, 400);
+	};
+
+	slider.addEventListener('pointerdown', startDrag);
+	document.addEventListener('pointermove', moveDrag);
+	document.addEventListener('pointerup', endDrag);
+	document.addEventListener('pointercancel', endDrag);
+	});
+</script>
+
 <body class="lock-scroll">
 
   <!-- HERO -->
@@ -15,7 +84,12 @@
     <div class="banner">Кирилл & Кристина</div>
     <div class="banner-date">22 августа 2026</div>
     <div class="banner-message">Мы будем счастливы разделить этот день с Вами</div>
-    <a href="#site" class="open-btn">ОТКРЫТЬ</a>
+    
+	<div class="unlock-slider" id="unlockSlider">
+  		<div class="slider-track"></div>
+  		<div class="slider-thumb" id="sliderThumb">➤</div>
+  		<span class="slider-text">проведите вправо для открытия</span>
+	</div>
   </header>
 
   <main id="site">
@@ -48,7 +122,7 @@
 						</div>
 				</div>
 			</div>
-			
+
 			<div class="invitation__image desktop-only">
 				<img src="img/3402.png" alt="Кирилл и Кристина">
 			</div>
@@ -153,17 +227,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Разблокировка скролла по кнопке
-      const openBtn = document.querySelector('.open-btn');
-      if (openBtn) {
-        openBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          document.body.classList.remove('lock-scroll');
-          document.getElementById('site').scrollIntoView({ behavior: 'smooth' });
-        });
-      }
-
-      // 2. Обратный отсчёт до 22 августа 2026, 12:30
+      // Обратный отсчёт до 22 августа 2026, 12:30
       const weddingDate = new Date('2026-08-22T12:30:00').getTime();
       const updateCountdown = () => {
         const now = new Date().getTime();
