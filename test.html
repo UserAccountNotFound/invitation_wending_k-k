@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marck+Script&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #f4f1ea;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            color: #5d4e4e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .invitation-card {
+            max-width: 600px;
+            width: 100%;
+            background: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        /* Header Text */
+        .header-text {
+            margin-bottom: 30px;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8b7355;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .header-text .divider {
+            font-size: 1.5rem;
+            color: #d4a5a5;
+            margin: 10px 0;
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #6b5b4f;
+        }
+
+        /* Photo Section */
+        .photo-wrapper {
+            position: relative;
+            margin: 30px 0;
+            overflow: hidden;
+            /* Creating the torn paper effect at the bottom */
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            mask-size: 100% 100%;
+            /* Simulating tear with a complex gradient is hard, using a simpler clip-path approach for the container below instead */
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            max-height: 500px;
+        }
+
+        /* The white torn edge overlay */
+        .torn-edge {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #fff;
+            /* SVG pattern for torn paper edge */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 Q150,60 300,30 T600,30 T900,30 T1200,30 V60 H0 Z' fill='%23ffffff'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            z-index: 2;
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .month-year {
+            font-size: 2rem;
+            color: #b03e3e;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .month-year::after {
+            content: '♡';
+            display: block;
+            font-size: 1rem;
+            color: #d4a5a5;
+            margin-top: 5px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto 30px auto;
+            text-align: center;
+        }
+
+        .day-name {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #999;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .day-number {
+            font-size: 1.1rem;
+            padding: 5px;
+            color: #5d4e4e;
+        }
+
+        .day-number.special {
+            color: #b03e3e;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .day-number.special::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 35px;
+            height: 35px;
+            border: 1px solid #b03e3e;
+            border-radius: 50% 50% 0 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            z-index: -1;
+        }
+        
+        /* Fix for the heart shape on 22 */
+        .day-22 {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .heart-outline {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #b03e3e;
+            transform: rotate(-45deg);
+            border-radius: 50% 50% 0 50%;
+            z-index: 0;
+        }
+        
+        .heart-outline::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #b03e3e;
+            border-radius: 50% 50% 0 50%;
+            transform: rotate(0deg); /* Overlap to make heart shape */
+        }
+
+        /* Footer Text */
+        .footer-text {
+            font-family: 'Marck Script', cursive;
+            font-size: 1.5rem;
+            color: #8b7355;
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+
+        .footer-heart {
+            font-size: 1.5rem;
+            color: #d4a5a5;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .header-text h1 { font-size: 1.8rem; }
+            .header-text p { font-size: 1rem; }
+            .calendar-grid { gap: 5px; max-width: 100%; }
+            .day-name { font-size: 0.7rem; }
+            .day-number { font-size: 0.9rem; }
+            .month-year { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="invitation-card">
+        <div class="header-text">
+            <h1>Дорогие<br>Родные и Близкие!</h1>
+            <div class="divider">♡</div>
+            <p>В нашей жизни произойдёт<br>очень важное событие – наша свадьба!</p>
+            <p>Мы верим, что этот день станет<br>красивым началом долгой<br>и счастливой жизни!</p>
+        </div>
+
+        <div class="photo-wrapper">
+            <!-- Placeholder image matching the description -->
+            <img src="img/3402.png" alt="Свадебная пара">
+            <div class="torn-edge"></div>
+        </div>
+
+        <div class="calendar-section">
+            <h2 class="month-year">Август 2026</h2>
+            
+            <div class="calendar-grid">
+                <div class="day-name">Пн</div>
+                <div class="day-name">Вт</div>
+                <div class="day-name">Ср</div>
+                <div class="day-name">Чт</div>
+                <div class="day-name">Пт</div>
+                <div class="day-name">Сб</div>
+                <div class="day-name">Вс</div>
+
+                <!-- Empty cells for start of month -->
+                <div></div><div></div><div></div><div></div><div></div>
+                
+                <!-- Days -->
+                <div class="day-number">1</div>
+                <div class="day-number">2</div>
+                <div class="day-number">3</div>
+                <div class="day-number">4</div>
+                <div class="day-number">5</div>
+                <div class="day-number">6</div>
+                <div class="day-number">7</div>
+                <div class="day-number">8</div>
+                <div class="day-number">9</div>
+                <div class="day-number">10</div>
+                <div class="day-number">11</div>
+                <div class="day-number">12</div>
+                <div class="day-number">13</div>
+                <div class="day-number">14</div>
+                <div class="day-number">15</div>
+                <div class="day-number">16</div>
+                <div class="day-number">17</div>
+                <div class="day-number">18</div>
+                <div class="day-number">19</div>
+                <div class="day-number">20</div>
+                <div class="day-number">21</div>
+                
+                <!-- Special Day 22 -->
+                <div class="day-number day-22">
+                    <div class="heart-outline"></div>
+                    <span style="z-index: 1; position: relative;">22</span>
+                </div>
+                
+                <div class="day-number">23</div>
+                <div class="day-number">24</div>
+                <div class="day-number">25</div>
+                <div class="day-number">26</div>
+                <div class="day-number">27</div>
+                <div class="day-number">28</div>
+                <div class="day-number">29</div>
+                <div class="day-number">30</div>
+                <div class="day-number">31</div>
+            </div>
+
+            <div class="footer-text">
+                Будем счастливы разделить этот<br>день вместе с Вами!
+                <span class="footer-heart">♡</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
